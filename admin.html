@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des stagiaires</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+</head>
+<body>
+  <!-- Sidebar conservé -->
+  <aside class="sidebar">
+    <!-- Votre sidebar originale ici (logo, menu, etc.) -->
+    <a href="index.html" class="sidebar__logo text-center p-20">
+      <img style="margin-left: -25px; width:60%" src="assets/images/logo/ld.png" alt="Logo">
+    </a>
+    <div class="sidebar-menu-wrapper overflow-y-auto scroll-sm">
+      <div class="p-20 pt-10">
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu__item">
+            <a href="index.html" class="sidebar-menu__link">
+              <span class="icon"><i class="ph ph-squares-four"></i></span>
+              <span class="text">Accueil</span>
+            </a>
+          </li>
+          <li class="sidebar-menu__item">
+            <a href="email.html" class="sidebar-menu__link">
+              <span class="icon"><i class="ph ph-chats-teardrop"></i></span>
+              <span class="text">Boîte de réception</span>
+            </a>
+          </li>
+          <li class="sidebar-menu__item">
+            <a href="#" class="sidebar-menu__link" onclick="logout()">
+              <span class="icon"><i class="ph ph-sign-out"></i></span>
+              <span class="text">Se déconnecter</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <div class="dashboard-main-wrapper">
+    <div class="container mt-5">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white">
+          📋 Liste des stagiaires
+        </div>
+        <div class="card-body">
+          <table class="table table-striped table-bordered" id="users-table">
+            <thead class="table-success">
+              <tr>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Nom complet</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const users = [
+      { username: "ayoub77a@outlook.fr", nom: "Ayoub", prenom: "Ali" },
+      { username: "minahchang88@gmail.com", nom: "Chang", prenom: "Minah" },
+      { username: "andre.hanna44@gmail.com", nom: "Hanna", prenom: "André" }
+    ];
+
+    function afficherListe() {
+      const tbody = document.querySelector("#users-table tbody");
+      users.forEach(user => {
+        const nomComplet = `${user.prenom} ${user.nom}`;
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${user.username}</td>
+          <td>${user.nom}</td>
+          <td>${user.prenom}</td>
+          <td>${nomComplet}</td>
+          <td><button class="btn btn-success btn-sm" onclick="completer('${nomComplet}')">Compléter</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function completer(nomComplet) {
+      alert(`✅ Formation complétée pour ${nomComplet}`);
+    }
+
+    window.onload = afficherListe;
+
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("username");
+      localStorage.removeItem("loginTime");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

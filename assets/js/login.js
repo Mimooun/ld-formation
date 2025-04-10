@@ -146,8 +146,13 @@ function login() {
     message.style.color = "green";
 
     setTimeout(() => {
-      window.location.href = "index.html";
+      if (user.username.toLowerCase() === "contacts.centreldformation@gmail.com") {
+        window.location.href = "admin.html";
+      } else {
+        window.location.href = "index.html";
+      }
     }, 1000);
+    
   } else {
     message.textContent = "Identifiants incorrects ❌";
     message.style.color = "red";

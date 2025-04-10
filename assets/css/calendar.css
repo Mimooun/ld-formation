@@ -65,7 +65,7 @@
     cursor: pointer;
 }
 .current-date {
-    background-color: var(--main-600);
+    background-color: #95D5B2;
     color: #fff;
 }
 .current-date:hover {
