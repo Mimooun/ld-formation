@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Conversation</title>
-    <link rel="stylesheet" href="assets/css/conversations.css">
+    <link rel="stylesheet" href="assets/css/conversations.css" />
 </head>
 
 <body>
     <div class="email-layout">
         <!-- Sidebar -->
         <div class="sidebar">
-            <img class="logo-area" src="./assets/images/logo/ld.png" />
-            <h2>Home</h2>
+            <img class="logo-area" src="./assets/images/logo/ld.png" style="width:80%;" />
+           
             <ul class="menu">
                 <li><button class="compose-btn">Rédiger</button></li>
-                <li>Principale <span class="count">370</span></li>
+                <li>Principale</li>
                 <li>Favoris</li>
                 <li>Envoyés</li>
-                <li>Brouillons <span class="count">3</span></li>
+                <li>Brouillons <span class="count">12</span></li>
                 <li>Spam</li>
                 <li>Corbeille</li>
             </ul>
@@ -30,8 +30,8 @@
         <div class="email-content">
             <!-- Email Header -->
             <div class="email-header">
-                <a href="email.html"><button class="back-btn"> Précedent</button></a>
-                <h1 id="conversation-title">Loading...</h1>
+                <a href="email.html"><button class="back-btn">Précedent</button></a>
+                <h1 id="conversation-title">Chargement...</h1>
                 <div class="options">
                     <i class="star-icon">&#9733;</i>
                     <i class="menu-icon">&#8942;</i>
@@ -50,98 +50,69 @@
             </div>
         </div>
     </div>
+
     <script>
-        // Get the conversation ID from the URL
+        // Récupérer l'identifiant depuis l'URL (ex : SYLLA_MANKE)
         const params = new URLSearchParams(window.location.search);
         const conversationId = params.get('id');
 
-        // Define possible thank-you messages
-        const thankYouMessages = [
-            "Merci beaucoup pour cette opportunité. Je vais faire de mon mieux pour réussir !",
-            "Je suis reconnaissant(e) pour cette formation. Merci pour votre soutien !",
-            "Merci de croire en nous et de nous guider sur ce chemin de réussite.",
-            "Un grand merci pour cette chance d’apprendre et de progresser !",
-            "Je tiens à vous remercier pour tout ce que vous faites pour notre réussite.",
-            "Merci pour votre accompagnement, je suis prêt(e) à relever les défis !",
-            "C'est une chance incroyable de participer à cette formation. Merci beaucoup !",
-            "Je suis très reconnaissant(e) pour cette opportunité d'améliorer mes compétences.",
-            "Merci pour votre encouragement et pour cette belle initiative.",
-            "Je vous remercie sincèrement pour cette formation enrichissante.",
-            "Merci de m’avoir accueilli(e) dans ce programme. Je vais en tirer le meilleur !",
-            "Je suis vraiment reconnaissant(e) pour cette chance de grandir et de réussir. Merci !"
-        ];
-        const followUpMessages = [
-            "Pas de questions pour le moment, merci encore !",
-            "Je n'ai pas de questions pour l'instant, merci beaucoup !",
-            "Aucune question pour l'instant, merci encore !",
-            "Merci encore ! Pas de questions pour le moment.",
-            "Je n'ai rien à demander pour l'instant, merci encore !",
-            "Pas de questions pour l'instant, merci infiniment !",
-            "Je n’ai pas de questions pour l’instant, tout est parfait. Merci encore !",
-            "Tout va bien de mon côté, merci infiniment pour votre aide !”",
-            "Aucune question pour le moment, je suis prêt à avancer. Merci !”",
-            "Merci pour toutes ces informations. Pas de questions pour le moment !",
-            "Tout est bon de mon côté, merci pour votre soutien !",
-            "Je n’ai pas de questions pour l’instant, merci pour votre disponibilité !",
-            "Tout est clair, merci encore pour cette belle opportunité !",
-            "Merci beaucoup, tout est parfait pour le moment !",
-            "Aucune question pour l’instant, merci pour vos explications"
-
-        ];
-
-
-        // Fetch the JSON file
+        // Charger le fichier JSON avec les conversations
         fetch('assets/data/modifiedStagaireLinks.json')
             .then(response => response.json())
             .then(data => {
-                // Find the conversation by ID
+                // Trouver la bonne personne dans le tableau
                 const conversation = data.find(person => person.link.includes(conversationId));
 
                 if (conversation) {
-                    // Update the title
+                    // Afficher le nom dans le titre
                     document.getElementById('conversation-title').textContent = `${conversation.PRENOM} ${conversation.NOM}`;
 
-                    // Pick a random thank-you message for the student
-                    const randomThankYou = thankYouMessages[Math.floor(Math.random() * thankYouMessages.length)];
-                    // Pick a random follow-up message for the student
-                    const randomFollowUp = followUpMessages[Math.floor(Math.random() * followUpMessages.length)];
-
-                    // Generate messages dynamically
-                    const messages = [
-                        {
-                            sender: 'Assistant pédagogique', message: `Nous sommes ravis de vous accueillir et de vous accompagner dans votre parcours de formation.<br>
-    Pour faciliter votre expérience, tous les documents essentiels sont disponibles sur notre drive auquel vous avez un accès personnel.<br><br>
-    Vous y trouverez :<br><br>
-    - La convocation et le règlement intérieur, <span style ="font-weight : bold; color ">merci de lire et remplir  <a href="https://airtable.com/app088KqMnS7ADB1E/pagC71qFKompmHIpE/form" target="_blank" style="color: white; font-weight: bold; text-decoration: none;">le réglement intérieur</a></span><br>
-    - Les exercices et cas pratiques<br>
-    - Le support de cours<br>
-    <a style="color: black; font-weight: bold; text-decoration: none;" href="https://drive.google.com/drive/folders/1GXy143oHiw2jtquJy101FIEnvTYlDsjq?dmr=1&ec=wgc-drive-globalnav-goto" target="_blank"> - Les programmes de formations</a><br>
-    - Tous les éléments administratifs nécessaires<br>
-    - Un tutoriel pour vous guider dans l’utilisation de la plateforme<br>
-    - Vous trouverez ci-dessous le lien vers le drive, qui vous donnera un accès direct à ces ressources.<br><br>
-    <a href="${conversation.Drive}" target="_blank">Lien drive ici</a><br><br>
-    Pour toute assistance pédagogique ou technique, n’hésitez pas à nous contacter<br> Nous sommes là pour vous aider et assurer une formation réussie et enrichissante.<br>
-    <span style="font-weight : bold">Adresse e-mail : ldformation.contact@gmail.com</span><br>
-    <span style="font-weight : bold">Téléphone : 07 45 41 25 35 / 09 73 89 41 22 </span><br>
-    Bonne formation !`, type: 'vous'
-                        },
-                        { sender: `${conversation.PRENOM}`, message: randomThankYou, type: 'participant' },
-                        { sender: 'Assistant pédagogique', message: 'Vous avez des questions ?', type: 'vous' },
-                        { sender: `${conversation.PRENOM}`, message: randomFollowUp, type: 'participant' }
-                    ];
-
+                    // Récupérer et afficher les messages personnalisés
+                    const messages = conversation.conversation;
                     const messagesContainer = document.getElementById('conversation-messages');
-                    messages.forEach(msg => {
-                        const messageEl = document.createElement('div');
-                        messageEl.className = `message ${msg.type}`;
-                        messageEl.innerHTML = `<strong>${msg.sender}:</strong> ${msg.message}`;
-                        messagesContainer.appendChild(messageEl);
-                    });
+
+                    if (messages.length > 0) {
+  const driveLink = conversation.Drive;
+  const programmeLink = "https://drive.google.com/drive/folders/1GXy143oHiw2jtquJy101FIEnvTYlDsjq";
+  const airtableLink = "https://airtable.com/app088KqMnS7ADB1E/pagC71qFKompmHIpE/form";
+
+  // Message d'accueil avec 3 liens
+  messages[0].message = `
+    Nous sommes ravis de vous accueillir et de vous accompagner dans votre parcours de formation.<br><br>
+    Pour faciliter votre expérience, tous les documents essentiels sont disponibles ci-dessous :<br><br>
+    📝 <strong>Règlement intérieur :</strong> merci de lire et remplir  
+    <a href="${airtableLink}" target="_blank" style="color: white; background-color: #2d7eff; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-decoration: none;">
+      Remplir ici
+    </a><br><br>
+    
+    📘 <strong>Programme de la formation :</strong><br>
+    <a href="${programmeLink}" target="_blank" style="font-weight: bold; text-decoration: underline;">
+      Consulter le programme
+    </a><br><br>
+
+    📂 <strong>Votre espace Drive personnel :</strong><br>
+    <a href="${driveLink}" target="_blank" style="font-weight: bold;">
+      Accéder à vos documents
+    </a>
+  `;
+
+  // Affichage de la conversation dans le DOM
+  messages.forEach(msg => {
+    const messageEl = document.createElement('div');
+    messageEl.className = `message ${msg.type}`;
+    messageEl.innerHTML = `<strong>${msg.sender}:</strong> ${msg.message}`;
+    messagesContainer.appendChild(messageEl);
+  });
+}
+
                 } else {
-                    document.getElementById('conversation-title').textContent = 'Conversation Not Found';
+                    document.getElementById('conversation-title').textContent = 'Conversation introuvable';
                 }
             })
-            .catch(error => console.error('Error fetching conversation:', error));
+            .catch(error => {
+                console.error('Erreur lors du chargement de la conversation :', error);
+                document.getElementById('conversation-title').textContent = 'Erreur de chargement';
+            });
     </script>
 </body>
 
