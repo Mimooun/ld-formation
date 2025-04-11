@@ -95,7 +95,7 @@ body {
     border-radius: 10px ;
     color : white ;
     border : none ;
-    background-color: #9d4edd;
+    background-color: #95d5b2;
     cursor: pointer;
 }
 .email-header h1 {
@@ -144,7 +144,7 @@ body {
 
 /* Messages from "Participant" (Left Aligned) */
 .message.participant {
-    background: #9d4edd;
+    background: #95d5b2;
     align-self: flex-start; /* Aligns the message to the left */
     text-align: left; /* Ensures the text is left-aligned */
     margin-right: auto; /* Adds spacing from the right */

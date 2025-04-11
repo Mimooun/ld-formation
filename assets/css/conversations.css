@@ -25,14 +25,14 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background: #f3eaf9;
+    background: #ffffff;
     overflow-y: auto;
     flex: 1;
 }
 /* Sidebar */
 .sidebar {
     width: 20%;
-    background: #ebe0ff;
+    background: eee;
     padding: 20px;
     border-right: 1px solid #ddd;
 }
@@ -56,7 +56,7 @@ body {
     display: block;
     width: 100%;
     padding: 10px;
-    background: #9d4edd;
+    background: #95d5b2;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -87,7 +87,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: #ebe0ff;
+    background: #ffffff;
     border-bottom: 1px solid #ddd;
 }
 .email-header .back-btn {
@@ -95,7 +95,7 @@ body {
     border-radius: 10px ;
     color : white ;
     border : none ;
-    background-color: #9d4edd;
+    background-color: #95d5b2;
     cursor: pointer;
 }
 .email-header h1 {
@@ -136,7 +136,7 @@ body {
 
 /* Messages sent by "Vous" (Right Aligned) */
 .message.vous {
-    background: #ecd6fc;
+    background: #95d5b2;
     align-self: flex-end; /* Aligns the message to the right */
     text-align: left; /* Ensures the text is right-aligned */
     margin-left: auto; /* Adds spacing from the left */
@@ -144,11 +144,11 @@ body {
 
 /* Messages from "Participant" (Left Aligned) */
 .message.participant {
-    background: #9d4edd;
+    background: #b7e4c7;
     align-self: flex-start; /* Aligns the message to the left */
     text-align: left; /* Ensures the text is left-aligned */
     margin-right: auto; /* Adds spacing from the right */
-    color : white
+    color : black
 }
 
 /* Optional: Add a Tail for Messages */
@@ -187,7 +187,7 @@ body {
 
 .reply-box .submit-btn {
     padding: 10px 15px;
-    background: #9d4edd;
+    background: #95d5b2;
     color: #fff;
     border: none;
     border-radius: 5px;
