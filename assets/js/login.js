@@ -146,7 +146,7 @@ function login() {
     message.style.color = "green";
 
     setTimeout(() => {
-      if (user.username.toLowerCase() === "contacts.centreldformation@gmail.com") {
+      if (user.username.toLowerCase() === "contact.centreldformation@gmail.com") {
         window.location.href = "admin.html";
       } else {
         window.location.href = "index.html";
